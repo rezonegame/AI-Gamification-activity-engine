@@ -1,24 +1,25 @@
 
 
 
-import { AspectId, AspectDetail, PipelineStage } from '../../types';
+
+import { AspectId, AspectDetail, PipelineStage } from '../../types.ts';
 
 // Import meta-prompts for the comprehensive planning pipeline
-import { META_PROMPT_PLANNING_GOOGLE_SEARCH_RESEARCH } from './metaPrompts/planningGoogleSearchResearch';
-import { META_PROMPT_PLANNING_SMART_GOALS } from './metaPrompts/planningSMARTGoals';
-import { META_PROMPT_PLANNING_AUDIENCE_ANALYSIS } from './metaPrompts/planningAudienceAnalysis';
-import { META_PROMPT_PLANNING_THEME_SLOGAN } from './metaPrompts/planningThemeSlogan';
-import { META_PROMPT_PLANNING_CORE_TEAM_ROLES } from './metaPrompts/planningCoreTeamRoles';
-import { META_PROMPT_PLANNING_GAMIFICATION_IDEATION } from './metaPrompts/planningGamificationIdeation';
-import { META_PROMPT_PLANNING_BUDGET } from './metaPrompts/planningBudget';
-import { META_PROMPT_PLANNING_RISK_ASSESSMENT } from './metaPrompts/planningRiskAssessment';
-import { META_PROMPT_PREPARATION_VENUE_LOGISTICS } from './metaPrompts/preparationVenueLogistics';
-import { META_PROMPT_PREPARATION_CONTENT_GAMIFICATION } from './metaPrompts/preparationContentGamification';
-import { META_PROMPT_PREPARATION_PROMOTION_STRATEGY } from './metaPrompts/preparationPromotionStrategy';
-import { META_PROMPT_PREPARATION_BILL_OF_MATERIALS } from './metaPrompts/preparationBillOfMaterials';
-import { META_PROMPT_EXECUTION_RUNBOOK_EMERGENCY } from './metaPrompts/executionRunbookEmergency';
-import { META_PROMPT_EXECUTION_POST_EVENT_EVALUATION } from './metaPrompts/executionPostEventEvaluation';
-import { META_PROMPT_EXECUTION_MONITORING_OPTIMIZATION } from './metaPrompts/executionMonitoringOptimization';
+import { META_PROMPT_PLANNING_GOOGLE_SEARCH_RESEARCH } from './metaPrompts/planningGoogleSearchResearch.ts';
+import { META_PROMPT_PLANNING_SMART_GOALS } from './metaPrompts/planningSMARTGoals.ts';
+import { META_PROMPT_PLANNING_AUDIENCE_ANALYSIS } from './metaPrompts/planningAudienceAnalysis.ts';
+import { META_PROMPT_PLANNING_THEME_SLOGAN } from './metaPrompts/planningThemeSlogan.ts';
+import { META_PROMPT_PLANNING_CORE_TEAM_ROLES } from './metaPrompts/planningCoreTeamRoles.ts';
+import { META_PROMPT_PLANNING_GAMIFICATION_IDEATION } from './metaPrompts/planningGamificationIdeation.ts';
+import { META_PROMPT_PLANNING_BUDGET } from './metaPrompts/planningBudget.ts';
+import { META_PROMPT_PLANNING_RISK_ASSESSMENT } from './metaPrompts/planningRiskAssessment.ts';
+import { META_PROMPT_PREPARATION_VENUE_LOGISTICS } from './metaPrompts/preparationVenueLogistics.ts';
+import { META_PROMPT_PREPARATION_CONTENT_GAMIFICATION } from './metaPrompts/preparationContentGamification.ts';
+import { META_PROMPT_PREPARATION_PROMOTION_STRATEGY } from './metaPrompts/preparationPromotionStrategy.ts';
+import { META_PROMPT_PREPARATION_BILL_OF_MATERIALS } from './metaPrompts/preparationBillOfMaterials.ts';
+import { META_PROMPT_EXECUTION_RUNBOOK_EMERGENCY } from './metaPrompts/executionRunbookEmergency.ts';
+import { META_PROMPT_EXECUTION_POST_EVENT_EVALUATION } from './metaPrompts/executionPostEventEvaluation.ts';
+import { META_PROMPT_EXECUTION_MONITORING_OPTIMIZATION } from './metaPrompts/executionMonitoringOptimization.ts';
 
 
 export const PIPELINE_STAGES: PipelineStage[] = ['research', 'planning', 'preparation', 'execution_evaluation'];

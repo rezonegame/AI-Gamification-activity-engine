@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { useTranslation } from '../contexts/LanguageContext';
+import { useTranslation } from '../contexts/LanguageContext.tsx';
 
 interface LogDisplayProps {
   logs: string[];

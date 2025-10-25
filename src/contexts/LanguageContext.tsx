@@ -1,5 +1,6 @@
+
 import React, { createContext, useState, useContext, useEffect, useCallback, ReactNode } from 'react';
-import * as i18n from '../i18n';
+import * as i18n from '../i18n.ts';
 
 interface LanguageContextType {
   language: string;

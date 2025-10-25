@@ -1,8 +1,9 @@
 
 
+
 import React from 'react';
-import { AspectId, AspectProgress, PipelineStatus } from '../../types';
-import ProgressDisplayItem from './ProgressDisplayItem';
+import { AspectId, AspectProgress, PipelineStatus } from '../../types.ts';
+import ProgressDisplayItem from './ProgressDisplayItem.tsx';
 
 interface ProgressDisplayProps {
   title: string;

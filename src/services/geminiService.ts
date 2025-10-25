@@ -1,8 +1,10 @@
 
 
 
+
+
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
-import { AspectId } from "../types";
+import { AspectId } from "../types.ts";
 
 if (!process.env.API_KEY) {
   console.error("API_KEY environment variable not set. API calls will fail.");

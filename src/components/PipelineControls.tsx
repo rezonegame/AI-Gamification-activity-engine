@@ -1,7 +1,8 @@
 
+
 import React from 'react';
-import { PipelineStatus } from '../../types';
-import { useTranslation } from '../contexts/LanguageContext';
+import { PipelineStatus } from '../../types.ts';
+import { useTranslation } from '../contexts/LanguageContext.tsx';
 
 interface PipelineControlsProps {
   pipelineStatus: PipelineStatus;

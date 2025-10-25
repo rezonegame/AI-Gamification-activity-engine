@@ -1,8 +1,9 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './src/App';
-import { LanguageProvider } from './src/contexts/LanguageContext';
-import { initializeI18n } from './src/i18n';
+import App from './src/App.tsx';
+import { LanguageProvider } from './src/contexts/LanguageContext.tsx';
+import { initializeI18n } from './src/i18n.ts';
 
 async function startApp() {
   const rootElement = document.getElementById('root');

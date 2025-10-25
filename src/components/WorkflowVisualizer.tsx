@@ -1,10 +1,11 @@
 
 
 
+
 import React from 'react';
-import { AspectProgress, ProcessStageStatus } from '../../types';
-import { useTranslation } from '../contexts/LanguageContext';
-import { PIPELINE_STAGES } from '../constants/index';
+import { AspectProgress, ProcessStageStatus } from '../../types.ts';
+import { useTranslation } from '../contexts/LanguageContext.tsx';
+import { PIPELINE_STAGES } from '../constants/index.ts';
 
 interface WorkflowVisualizerProps {
   aspects: AspectProgress[];

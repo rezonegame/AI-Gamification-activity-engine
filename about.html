@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -42,6 +43,8 @@
       display: block;
     }
   </style>
+  <!-- This script enables in-browser transpilation of JSX and TypeScript. -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body class="antialiased">
 
@@ -112,6 +115,6 @@
     </div>
   </footer>
 
-  <script type="module" src="./src/i18n.ts"></script>
+  <script type="text/babel" data-presets="typescript" data-type="module" src="./src/i18n.ts"></script>
 </body>
 </html>

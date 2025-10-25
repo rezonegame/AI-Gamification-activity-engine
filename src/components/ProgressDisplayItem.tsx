@@ -1,8 +1,9 @@
 
 
+
 import React, { useState } from 'react';
-import { AspectProgress, PipelineStatus, ProcessStageStatus, AspectId } from '../../types';
-import { useTranslation } from '../contexts/LanguageContext';
+import { AspectProgress, PipelineStatus, ProcessStageStatus, AspectId } from '../../types.ts';
+import { useTranslation } from '../contexts/LanguageContext.tsx';
 
 interface ProgressDisplayItemProps {
   aspect: AspectProgress;

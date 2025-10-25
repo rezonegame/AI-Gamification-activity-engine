@@ -1,16 +1,17 @@
 
+
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { GenerateContentResponse } from '@google/genai';
-import PRDInput from './components/PRDInput';
-import PipelineControls from './components/PipelineControls';
-import ProgressDisplay from './components/ProgressDisplay';
-import ErrorMessage from './components/ErrorMessage';
-import LogDisplay from './components/LogDisplay';
-import WorkflowVisualizer from './components/WorkflowVisualizer';
-import { generateDesignPrompt } from './services/geminiService';
-import { ASPECT_DETAILS, PIPELINE_STAGES } from './constants/index';
-import { AspectId, AspectProgress, PipelineStatus, PipelineStage, ProcessStageStatus } from '../types';
-import { useTranslation } from './contexts/LanguageContext';
+import PRDInput from './components/PRDInput.tsx';
+import PipelineControls from './components/PipelineControls.tsx';
+import ProgressDisplay from './components/ProgressDisplay.tsx';
+import ErrorMessage from './components/ErrorMessage.tsx';
+import LogDisplay from './components/LogDisplay.tsx';
+import WorkflowVisualizer from './components/WorkflowVisualizer.tsx';
+import { generateDesignPrompt } from './services/geminiService.ts';
+import { ASPECT_DETAILS, PIPELINE_STAGES } from './constants/index.ts';
+import { AspectId, AspectProgress, PipelineStatus, PipelineStage, ProcessStageStatus } from '../types.ts';
+import { useTranslation } from './contexts/LanguageContext.tsx';
 
 
 declare var JSZip: any;
