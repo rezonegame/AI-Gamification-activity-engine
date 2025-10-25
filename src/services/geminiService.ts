@@ -1,16 +1,5 @@
-
-
-
-
-
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 import { AspectId } from "../types.ts";
-
-if (!process.env.API_KEY) {
-  console.error("API_KEY environment variable not set. API calls will fail.");
-}
-
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY! });
 
 const defaultSystemInstruction = `You are a world-class expert consultant. Your task is to analyze the user's document and any previous design documents based on the provided instructions and generate a structured response. Ensure your response is coherent with the previous work and strictly follows the output format specified in the instructions.`;
 
@@ -27,6 +16,10 @@ export const generateDesignPrompt = async (
     throw new Error('error.apiKeyNotConfigured');
   }
   
+  // Initialize the AI client here, inside the function, to prevent app crash on load
+  // if the API key is not available in the environment.
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+
   try {
     if (!metaPrompt) {
         throw new Error('error.metaPromptMissing');

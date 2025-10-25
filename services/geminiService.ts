@@ -1,16 +1,5 @@
-
-
-import { GoogleGenAI } from "@google/genai";
-
-// This line assumes the API_KEY is exposed as an environment variable
-// accessible in the frontend. In a real production app, this is a major
-// security risk and a backend-for-frontend (BFF) pattern is strongly recommended
-// to protect the key.
-if (!process.env.API_KEY) {
-  console.error("API_KEY environment variable not set. API calls will fail.");
-}
-
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY! });
+import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
+import { AspectId } from "../types.ts";
 
 const defaultSystemInstruction = `You are a world-class expert consultant. Your task is to analyze the user's document and any previous design documents based on the provided instructions and generate a structured response. Ensure your response is coherent with the previous work and strictly follows the output format specified in the instructions.`;
 
@@ -19,17 +8,21 @@ export const generateDesignPrompt = async (
   userPRD: string,
   previousOutputs: { name: string; output: string }[],
   metaPrompt: string,
-  onChunk: (chunk: string) => void,
+  aspectId: AspectId,
+  onChunk: (chunk: GenerateContentResponse) => void,
   onLog?: (message: string) => void
 ): Promise<void> => {
-  // A runtime check to provide a clear error to the user if the key is missing.
   if (!process.env.API_KEY) {
-    throw new Error("API Key is not configured. Please ensure the API_KEY environment variable is set.");
+    throw new Error('error.apiKeyNotConfigured');
   }
   
+  // Initialize the AI client here, inside the function, to prevent app crash on load
+  // if the API key is not available in the environment.
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+
   try {
     if (!metaPrompt) {
-      throw new Error("Invalid aspect selected: meta-prompt is missing.");
+        throw new Error('error.metaPromptMissing');
     }
     
     onLog?.('Preparing context and instructions...');
@@ -42,9 +35,6 @@ export const generateDesignPrompt = async (
       ? `<PREVIOUS_DESIGN_DOCUMENTS>
 ${previousOutputsContext}</PREVIOUS_DESIGN_DOCUMENTS>`
       : '';
-    
-    // ONE-STEP PROCESS (for ALL aspects)
-    onLog?.('Generating output...');
       
     const requestContent =`<TASK_INSTRUCTIONS>
 ${metaPrompt}
@@ -55,28 +45,34 @@ ${contextBlock}
 <USER_DOCUMENT>
 ${userPRD}
 </USER_DOCUMENT>`;
+    
+    const config: any = {
+      systemInstruction: defaultSystemInstruction,
+    };
+
+    if (aspectId === AspectId.PLANNING_GOOGLE_SEARCH_RESEARCH) {
+      onLog?.('Performing deep research using Google Search...');
+      config.tools = [{ googleSearch: {} }];
+    }
+
+    onLog?.('Generating output...');
 
     const stream = await ai.models.generateContentStream({
       model: 'gemini-2.5-flash',
       contents: requestContent,
-      config: {
-        systemInstruction: defaultSystemInstruction,
-      },
+      config: config,
     });
 
     for await (const chunk of stream) {
-        const chunkText = chunk.text;
-        if (chunkText) {
-            onChunk(chunkText);
-        }
+      onChunk(chunk);
     }
     
   } catch (error) {
     console.error("Error in Gemini service call:", error);
     if (error instanceof Error) {
-       // Re-throw a more user-friendly message for the UI to catch.
-       throw new Error(`AI generation failed: ${error.message}`);
+       // Re-throw a generic, localizable error key. The original message is often too technical.
+       throw new Error('error.aiGenerationFailed');
     }
-    throw new Error("An unknown error occurred while communicating with the Gemini API.");
+    throw new Error('error.unknownApiError');
   }
 };

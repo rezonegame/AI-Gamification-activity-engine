@@ -1,59 +1,321 @@
-const translations: { [key: string]: any } = {};
-let translationsLoaded = false;
-let initializationPromise: Promise<boolean> | null = null;
+// --- EMBEDDED TRANSLATIONS ---
+// By embedding the translations directly, we eliminate the fragile network
+// request at startup, which was the root cause of the "Failed to load" error.
+// This ensures the application can always initialize its text resources reliably.
 
-async function loadTranslations() {
-  try {
-    const [enResponse, zhResponse] = await Promise.all([
-      fetch('./src/locales/en.json'),
-      fetch('./src/locales/zh.json')
-    ]);
-    if (!enResponse.ok || !zhResponse.ok) {
-      throw new Error('Failed to fetch translation files');
+const enTranslations = {
+  "html": {
+    "title": { "main": "AI-Powered Professional Design & Planning Engine", "about": "About Us - AI-Powered Professional Design & Planning Engine" },
+    "meta": {
+      "description": "Your expert AI partner, guiding you through a systematic, professional process to inject a gamification gene into your project, turning any idea into a successful, engaging reality.",
+      "keywords": "activity theory, human-computer interaction, user experience, instructional design, organizational development, gamification, user engagement, AI tool, systems thinking, project planning, event planning, course design",
+      "description.about": "Learn about the AI-Powered Professional Design & Planning Engine from ThinkTank, a tool designed to turn any idea into a successful reality through a systemic, AI-driven professional process."
+    },
+    "og": { "title": "AI-Powered Professional Design & Planning Engine - Inject a Gamification Gene into Your Project", "description": "Our AI guides you through a full suite of professional planning, from goal setting, motivation analysis, and gamification ideation to flawless execution and long-term optimization, creating experiences that truly captivate users." },
+    "twitter": { "title": "AI-Powered Professional Design & Planning Engine - Inject a Gamification Gene into Your Project", "description": "Our AI guides you through a full suite of professional planning, from goal setting, motivation analysis, and gamification ideation to flawless execution and long-term optimization, creating experiences that truly captivate users." }
+  },
+  "nav": { "features": "Core Features", "howItWorks": "How It Works", "faq": "FAQ" },
+  "hero": {
+    "title": { "line1": "AI-Powered Professional Design & Planning Engine", "line2": "Inject a Gamification Gene into Your Project" },
+    "subtitle": "Our AI engine fuses professional project planning workflows with cutting-edge gamification design theory to help you create extraordinary experiences that not only launch successfully but also inspire deep user engagement and lasting enthusiasm.",
+    "feature1": "Systemic Planning", "feature2": "Gamification Design", "feature3": "Create Lasting Momentum",
+    "cta": { "start": "Start Planning for Free" }
+  },
+  "howItWorks": {
+    "title": "A Structured Journey from Idea to Success",
+    "subtitle": "The AI will guide you through a professional, multi-stage design and planning process.",
+    "step1": { "title": "Plan & Ideate", "description": "Input your initial idea. The AI helps you set SMART goals, analyze user motivation, conduct gamification ideation, and complete budget and risk assessments to build a solid foundation." },
+    "step2": { "title": "Design & Prepare", "description": "The AI generates a detailed Gamification Design Blueprint, promotion strategy, and Bill of Materials (BOM), turning vague concepts into concrete, actionable plans." },
+    "step3": { "title": "Execute & Optimize", "description": "The AI generates a detailed Runbook, emergency protocols, and post-event evaluation plans, and maps out a long-term monitoring strategy to ensure lasting success." },
+    "step4": { "title": "Download & Iterate", "description": "Export all generated planning documents with one click. Based on the AI's analysis, you can easily iterate and optimize your plan for continuous improvement." }
+  },
+  "features": {
+    "title": "Your AI-Powered Systems Designer & Planner", "subtitle": "Translating professional theory and practical experience into productivity for every project.",
+    "card1": { "title": "Systemic Perspective", "description": "Using Activity Theory, we analyze your project as a complete 'Activity System' to find the root causes of success or failure, not just list tasks." },
+    "card2": { "title": "Research-Driven Gamification", "description": "The AI integrates a validated gamification design framework, starting with user motivation and player type analysis to design systems that truly foster intrinsic motivation, not just simple 'Points, Badges, and Leaderboards'." },
+    "card3": { "title": "Comprehensive Checklists", "description": "We provide a full suite of professional planning documents, from budgets and risk controls to a Bill of Materials (BOM), ensuring you are thorough and foolproof." },
+    "card4": { "title": "Actionable Execution Plans", "description": "The AI doesn't just help plan; it generates detailed Runbooks and emergency protocols to ensure your ideas are smoothly implemented." },
+    "card5": { "title": "Continuous Optimization", "description": "Successful gamified systems require constant tuning. The AI generates a long-term monitoring and optimization plan to help you maintain balance and appeal through data analysis and A/B testing." },
+    "card6": { "title": "Downloadable & Actionable", "description": "Export all generated analysis reports and design documents as individual markdown files or a single ZIP archive to easily integrate into your team's workflow." }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions", "subtitle": "Have questions? We have answers.",
+    "q1": { "question": "How is this tool's gamification design different from others?", "answer": "Our key differentiators are 'systemic' and 'research-driven'. We don't just suggest 'add a badge'. Instead, we first deeply understand your users and system goals through Activity Theory and player type analysis. Then, in a dedicated 'Ideation' phase, we explore multiple gamification concepts. Finally, we craft the most suitable concept into a complete system with a core loop, player journey, and a long-term optimization plan. It's a complete, professional process from 'why' to 'what' to 'how'." },
+    "q2": { "question": "Is this tool for me? I'm not a professional project manager.", "answer": "Absolutely. The value of this tool is that it 'translates' professional planning processes and theories into a guided, practical set of steps that anyone can use. You don't need prior knowledge of Activity Theory or project management. Just provide your initial idea, and the AI will act as a professional planning consultant, guiding you through all stages like goal setting, budgeting, risk control, and material prep, generating professional documents along the way." },
+    "q3": { "question": "Is my data private and secure?", "answer": "Yes. We do not store your documents or the generated outputs on our servers. Your input is sent directly to the Google Gemini API for processing and streamed back to your browser. Your input text is saved in your browser's local storage for convenience so you don't lose your work between sessions, but you can clear it at any time." },
+    "q4": { "question": "Can I use the generated content commercially?", "answer": "Absolutely. The generated content is yours to use as a planning document, budget report, or risk control manual for your commercial projects. As with any AI-generated content, we always recommend you review, edit, and adapt it to perfectly fit your project's unique needs and legal requirements." }
+  },
+  "cta": { "title": "Ready to Turn Your Idea Into a Successful Reality?", "subtitle": "Stop scattered planning, start systemic design. Master every detail and launch your project plan now.", "button": "Launch Engine" },
+  "footer": { "owner": "ThinkTank", "rights": "All rights reserved.", "tagline": "Powered by ThinkTank.", "about": "About Us" },
+  "app": { "title": "AI-Powered Professional Design & Planning Engine", "subtitle": "Your AI partner for turning ideas into successful, engaging realities." },
+  "prdInput": { "label": "1. Input Your Project Concept", "placeholder": "Paste your project plan, course outline, workflow description, or initial ideas here...\n\nExample:\nI want to design a one-month online onboarding program for new employees. The goal is to help them quickly understand the company culture and master basic job skills. I want the process to be more engaging than just watching dry videos...", "description": "Describe the project you want to plan in detail, including its goals, target audience, and core content. The more detail you provide, the more accurate the AI's analysis will be." },
+  "controls": {
+    "runFullPipeline": "Run Full Pipeline",
+    "runSelected": "Run Selected Steps",
+    "stop": "Stop Processing",
+    "reset": "Reset",
+    "downloadAll": "Download All (ZIP)",
+    "confirmReset": "Confirm Reset?"
+  },
+  "workflow": {
+    "title": "Full Project Planning Workflow Overview",
+    "stage": {
+      "research": { "title": "Optional Stage 0: In-Depth Research", "description": "Before formal planning, enable this step to have the AI conduct in-depth research on your concept using Google Search for market analysis, competitor insights, and best practices, providing richer context for subsequent steps." },
+      "planning": { "title": "Stage 1: Plan & Ideate", "description": "From goals to risks, define the project's core blueprint. The AI will guide you to set SMART goals, analyze the audience, devise a theme, assemble a team, create a budget, and conduct a risk assessment." },
+      "preparation": { "title": "Stage 2: Design & Prepare", "description": "From venue to materials, turn the blueprint into concrete preparations. The AI will help you plan logistics, create a gamification blueprint, devise a promotion strategy, and generate a detailed Bill of Materials." },
+      "execution_evaluation": { "title": "Stage 3: Execute & Optimize", "description": "From process to post-mortem, ensure a smooth launch and continuous improvement. The AI will generate a detailed runbook, emergency protocols, a post-mortem framework, and a long-term optimization strategy." }
     }
-    translations.en = await enResponse.json();
-    translations.zh = await zhResponse.json();
-    translationsLoaded = true;
-  } catch (error) {
-    console.error("Failed to load i18n dictionaries:", error);
-    translationsLoaded = false;
+  },
+  "progressItem": {
+    "edit": "Edit", "save": "Save", "cancel": "Cancel", "copy": "Copy", "copied": "Copied!", "copyFailed": "Failed",
+    "hide": "Hide", "show": "Show", "download": "Download",
+    "lockedTooltip": "Complete previous steps to unlock.",
+    "aria": { "select": "Select aspect {{name}}", "toggleOutput": "Show or hide output for {{name}}", "download": "Download output for {{name}}", "copy": "Copy output for {{name}}" }
+  },
+  "logs": { "title": "Run Logs" },
+  "status": { "pending": "Pending", "processing": "Processing...", "completed": "Completed", "error": "Error", "cancelled": "Cancelled", "stopped": "Stopped", "stale": "Stale (Needs Rerun)", "unknown": "Unknown" },
+  "error": {
+    "prefix": "Error", "details": "Details", "prdEmpty": "Project description cannot be empty.",
+    "noAspectsSelected": "Please select at least one aspect to process.", "unknown": "An unknown error occurred.", "processingFailedHalt": "\"{{name}}\" processing failed. Pipeline halted.",
+    "noCompletedItems": "No completed items to download.",
+    "prerequisitesNotMet": "Prerequisites not met. Please complete all necessary steps in order.",
+    "apiKeyNotConfigured": "API Key is not configured. Please ensure it is set up correctly in your environment.",
+    "metaPromptMissing": "Invalid aspect selected: core instructions are missing.",
+    "aiGenerationFailed": "AI generation failed. This may be a temporary network issue. Please check your input and try again.",
+    "unknownApiError": "An unknown error occurred while communicating with the AI service.",
+    "onlyCompletedSelected": "All selected modules are already completed. Please select a pending module to continue."
+  },
+  "log": {
+    "stoppedByUser": "Pipeline stopped by user.", "callingAi": "  -> Calling AI for \"{{name}}\"...", "aiStreamComplete": "  -> AI stream for \"{{name}}\" completed successfully.", "aiCallFailed": "  -> AI call for \"{{name}}\" failed: {{error}}",
+    "pipelineBatchSuccess": "Processing of the current batch of modules is complete. You can now select new modules and start the process again.",
+    "stageProcessingStart": "Beginning processing for stage '{{stage}}'...",
+    "stageSuccess": "Stage '{{stage}}' completed successfully.",
+    "stopRequested": "Stop requested. Pipeline will halt after current task.",
+    "fullPipelineStarted": "Full pipeline started. Will automatically execute all unfinished steps in order.",
+    "fullPipelineSuccess": "Full pipeline has been executed successfully!"
+  },
+  "confirm": { "reset": "Are you sure you want to reset the entire pipeline? All progress and inputs will be lost." },
+  "aspect": {
+      "planningGoogleSearchResearch": { "name": "In-Depth Research (via Google Search)", "description": "Optional: Let the AI conduct in-depth research on your concept using Google Search to analyze market trends, competitors, and best practices." },
+      "planningSMARTGoals": { "name": "1.1 Goals & Feasibility", "description": "Define measurable project goals and assess if gamification is the right strategy to achieve them." },
+      "planningAudienceAnalysis": { "name": "1.2 Users & Motivation", "description": "Develop user personas and analyze their intrinsic motivations and player types to inform gamification design." },
+      "planningThemeSlogan": { "name": "1.3 Theme & Slogan", "description": "Design a compelling theme and slogan to serve as the core promotional tool to attract users." },
+      "planningCoreTeamRoles": { "name": "1.4 Team & Roles", "description": "Build an efficient team structure and define responsibilities to prevent internal execution conflicts." },
+      "planningGamificationIdeation": { "name": "1.5 Gamification Ideation", "description": "Conduct a creative brainstorm to explore diverse gamification concepts, themes, and core mechanics." },
+      "planningBudget": { "name": "1.6 Budget Planning", "description": "Create a detailed financial budget and manage it as a core rule for the project's operation." },
+      "planningRiskAssessment": { "name": "1.7 Risk Assessment", "description": "Identify potential risks and develop corresponding mitigation measures and contingency plans." },
+      "preparationVenueLogistics": { "name": "2.1 Venue & Logistics", "description": "Plan the venue, facilities, and logistical support, treating them as critical tools that impact the user experience." },
+      "preparationContentGamification": { "name": "2.2 Content & Gamification Blueprint", "description": "Design the core content and create a detailed Gamification Design Blueprint, including the core loop and player journey." },
+      "preparationPromotionStrategy": { "name": "2.3 Promotion Strategy", "description": "Develop a multi-channel promotion plan to build and mobilize the project's core user community." },
+      "preparationBillOfMaterials": { "name": "2.4 Bill of Materials (BOM)", "description": "Generate a comprehensive list of materials to ensure all tools for execution are ready." },
+      "executionRunbookEmergency": { "name": "3.1 Runbook & Emergency Plan", "description": "Create a minute-by-minute execution schedule (Runbook) and a crisis management plan." },
+      "executionPostEventEvaluation": { "name": "3.2 Post-Mortem & Evaluation", "description": "Design an evaluation framework to measure project outcomes and the effectiveness of gamification mechanics to drive improvement." },
+      "executionMonitoringOptimization": { "name": "3.3 Long-Term Monitoring & Optimization", "description": "Create a long-term plan for monitoring, data analysis, and iterative optimization of the gamified system." }
+  },
+   "about": {
+    "title": "About Us",
+    "company": {
+      "title": "About ThinkTank",
+      "p1": "ThinkTank is a leading technology company specializing in the intersection of artificial intelligence and creativity. Our mission is to develop tools that augment human intelligence and amplify creative potential. We believe that the best application of AI is not to replace humans, but to become an indispensable co-pilot for creators, designers, and thinkers, helping them bridge the gap from inspiration to reality.",
+      "p2": "The 'AI-Powered Professional Design & Planning Engine' is a manifestation of our philosophy. It combines powerful theoretical frameworks with AI capabilities, aiming to democratize professional systemic planning for every creative individual and team."
+    },
+    "philosophy": {
+      "title": "Our Product Philosophy: Designing Infinite Games",
+      "p1": "In his book 'Finite and Infinite Games', James P. Carse describes two types of games: finite games are played for the purpose of winning, while infinite games are played for the purpose of continuing the play. Traditional product design often falls into a 'finite game' mindset—chasing short-term wins like feature launches or KPI targets. However, the products that truly retain users often exhibit qualities of an 'infinite game': they create a world where users can continuously grow, explore, and interact.",
+      "p2": "The core philosophy of this tool is to help creators escape the 'finite game' trap. By using Activity Theory, we identify and resolve the systemic contradictions that end the 'play', enabling the design of 'infinite games'—experiences built on sustainable engagement, meaningful growth, and deep social connection."
+    },
+    "contact": {
+        "title": "Contact Us",
+        "p1": "We are always looking for talented partners and exciting collaboration opportunities. If you have any suggestions for our products or wish to discuss potential partnerships, please contact us through the following channels:",
+        "email": "Email",
+        "website": "Official Website"
+    }
+  },
+  "download": {
+    "zipFilename": "Project_Plan.zip",
+    "mdFilename": "{{name}}_Plan"
   }
-}
+};
 
+const zhTranslations = {
+  "html": {
+    "title": { "main": "AI驱动的专业设计与策划引擎", "about": "关于我们 - AI驱动的专业设计与策划引擎" },
+    "meta": {
+      "description": "您的AI专家伙伴，引导您通过系统化的专业流程，为您的项目注入游戏化基因，将任何想法转化为成功的、富有吸引力的现实。",
+      "keywords": "活动理论, 人机交互, 用户体验, 教学设计, 组织发展, 游戏化, 用户参与, AI工具, 系统思维, 项目策划, 活动策划, 课程设计, project planning, event planning, course design, gamification",
+      "description.about": "了解由智研家出品的AI驱动的专业设计与策划引擎，一款旨在通过系统性的、AI驱动的专业流程将任何想法转化为成功现实的工具。"
+    },
+    "og": { "title": "AI驱动的专业设计与策划引擎 - 为您的项目注入游戏化基因", "description": "AI将引导您完成从目标设定、动机分析、游戏化创意到落地执行和长期优化的全套专业策划，打造真正吸引用户的体验。" },
+    "twitter": { "title": "AI驱动的专业设计与策划引擎 - 为您的项目注入游戏化基因", "description": "AI将引导您完成从目标设定、动机分析、游戏化创意到落地执行和长期优化的全套专业策划，打造真正吸引用户的体验。" }
+  },
+  "nav": { "features": "核心功能", "howItWorks": "工作原理", "faq": "常见问题" },
+  "hero": {
+    "title": { "line1": "AI驱动的专业设计与策划引擎", "line2": "为您的项目注入游戏化基因" },
+    "subtitle": "我们的AI引擎融合了专业的项目策划流程与前沿的游戏化设计理论，助您打造不仅能成功落地，更能激发用户深度参与和持续热情的非凡体验。",
+    "feature1": "系统性策划", "feature2": "游戏化设计", "feature3": "创造持续动力",
+    "cta": { "start": "免费开始策划" }
+  },
+  "howItWorks": {
+    "title": "从想法到成功的结构化旅程",
+    "subtitle": "AI将引导您完成一次专业的、分阶段的设计与策划流程。",
+    "step1": { "title": "策划与构思", "description": "输入您的初步想法。AI会帮助您设定SMART目标、分析用户动机、进行游戏化构思，并完成预算与风险评估，为项目奠定坚实基础。" },
+    "step2": { "title": "设计与准备", "description": "AI为您生成详细的游戏化设计蓝图、宣传策略和物料清单(BOM)，将模糊的概念转化为具体的、可执行的准备方案。" },
+    "step3": { "title": "执行与优化", "description": "AI为您生成详细的执行手册(Runbook)、应急预案和事后评估方案，并规划长期监控策略，确保持续成功。" },
+    "step4": { "title": "下载与迭代", "description": "一键下载所有生成的策划文档。基于AI的分析，您可以轻松地对方案进行迭代和优化，实现持续改进。" }
+  },
+  "features": {
+    "title": "您的AI驱动的系统设计师与策划师", "subtitle": "将专业理论与实践经验，转化为每个项目的生产力。",
+    "card1": { "title": "系统化视角", "description": "我们使用活动理论，将项目视为一个完整的“活动系统”进行分析，找到影响项目成败的根源，而不只是罗列任务清单。" },
+    "card2": { "title": "研究驱动的游戏化设计", "description": "AI集成了经过验证的游戏化设计框架，从分析用户动机和玩家类型入手，设计真正能激发内在动力的系统，而非简单的“积分、徽章、排行榜”。" },
+    "card3": { "title": "全面的策划清单", "description": "提供从预算、风控到物料清单（BOM）的全套专业策划文档，确保您考虑周全、万无一失，避免遗漏关键细节。" },
+    "card4": { "title": "可落地的执行方案", "description": "AI不仅帮助分析和规划，更能生成详细的执行手册（Runbook）和应急预案，让您的想法能够平稳落地。" },
+    "card5": { "title": "持续优化与监控", "description": "成功的游戏化系统需要持续调整。AI会为您生成长期的监控与优化计划，帮助您通过数据分析和A/B测试，保持系统的平衡与吸引力。" },
+    "card6": { "title": "可下载与分享", "description": "将所有生成的分析报告和设计文档导出为单独的 markdown 文件或单个 ZIP 存档，轻松集成到您的团队工作流中。" }
+  },
+  "faq": {
+    "title": "常见问题", "subtitle": "有疑问？我们有答案。",
+    "q1": { "question": "这个工具的游戏化设计和其他工具有什么不同？", "answer": "我们的核心区别在于“系统性”和“研究驱动”。我们不直接推荐“加个徽章”。相反，我们首先通过活动理论和玩家类型分析，深入理解您的用户和系统目标。然后，在一个专门的“创意”阶段，我们会探索多种可能的游戏化概念。最后，我们才将最合适的概念，设计成一个包含核心循环、玩家旅程和长期优化计划的完整系统。这是一个从“为什么”到“是什么”再到“如何做”的完整、专业流程。" },
+    "q2": { "question": "这个工具适合我吗？我不是专业的项目经理。", "answer": "完全适合。这个工具的价值就在于将专业的策划流程和理论“翻译”成一套任何人都可以使用的、引导性的实践步骤。您不需要预先了解活动理论或项目管理。您只需提供您的初步想法，AI就会扮演专业策划顾问的角色，引导您一步步完成目标设定、预算、风控、物料准备等所有环节，并生成专业的策划文档。" },
+    "q3": { "question": "我的数据是私密和安全的吗？", "answer": "是的。我们不会在我们的服务器上存储您的文档或生成的输出。您的输入将直接发送到Google Gemini API进行处理，并流式传输回您的浏览器。为了方便起见，您的输入文本会保存在您浏览器的本地存储中，这样您就不会在会话之间丢失工作，但您可以随时清除它。" },
+    "q4": { "question": "我可以将生成的内容用于商业用途吗？", "answer": "当然可以。生成的内容归您所有，可以作为您商业项目的策划方案、预算报告、风控手册等。与任何AI生成的内容一样，我们始终建议您审查、编辑和调整它，以完美适应您项目的独特需求和法律要求。" }
+  },
+  "cta": { "title": "准备好将您的想法变成成功的现实了吗？", "subtitle": "停止零散的规划，开始系统性地策划。让每一个细节尽在掌握，立即启动您的项目策划。", "button": "启动引擎" },
+  "footer": { "owner": "智研家", "rights": "版权所有。", "tagline": "由智研家提供技术支持。", "about": "关于我们" },
+  "app": { "title": "AI驱动的专业设计与策划引擎", "subtitle": "您的AI专家伙伴，将想法转化为成功的、富有吸引力的现实。" },
+  "prdInput": { "label": "1. 输入您的项目构想", "placeholder": "请在此处粘贴您的项目策划、课程大纲、工作流程描述或初步想法...\n\n例如：\n我想为公司的新员工设计一个为期一个月的线上入职培训项目。目标是让他们快速了解公司文化，并掌握基础的岗位技能。希望这个过程能更有趣，而不是看枯燥的视频...", "description": "请详细描述您希望策划的项目，包括其目标、目标人群、核心内容以及任何初步设想。描述越详细，AI的分析越精准。" },
+  "controls": {
+    "runFullPipeline": "运行完整流程",
+    "runSelected": "运行已选步骤",
+    "stop": "停止处理",
+    "reset": "重置",
+    "downloadAll": "下载全部 (ZIP)",
+    "confirmReset": "确认重置？"
+  },
+  "workflow": {
+    "title": "项目策划全流程概览",
+    "stage": {
+      "research": { "title": "可选阶段 0：深度研究", "description": "在正式策划前，启用此步骤可让AI使用谷歌搜索对您的构想进行市场、竞品和最佳实践的深度研究，为后续步骤提供更丰富的上下文。" },
+      "planning": { "title": "阶段一：策划与构思", "description": "从目标到风控，定义项目的核心蓝图。AI将引导您设定SMART目标、分析受众、构思主题、组建团队、规划预算并进行风险评估。" },
+      "preparation": { "title": "阶段二：设计与准备", "description": "从场地到物料，将蓝图转化为具体的准备工作。AI将帮助您规划后勤、设计游戏化蓝图、制定宣传策略并生成详细的物料清单。" },
+      "execution_evaluation": { "title": "阶段三：执行与优化", "description": "从流程到复盘，确保项目顺利落地并实现持续改进。AI将为您生成详细的执行手册、应急预案、复盘框架和长期优化策略。" }
+    }
+  },
+  "progressItem": {
+    "edit": "编辑", "save": "保存", "cancel": "取消", "copy": "复制", "copied": "已复制!", "copyFailed": "复制失败",
+    "hide": "隐藏", "show": "显示", "download": "下载",
+    "lockedTooltip": "请先完成前置步骤以解锁。",
+    "aria": { "select": "选择方面 {{name}}", "toggleOutput": "显示或隐藏 {{name}} 的输出", "download": "下载 {{name}} 的输出", "copy": "复制 {{name}} 的输出" }
+  },
+  "logs": { "title": "运行日志" },
+  "status": { "pending": "待处理", "processing": "处理中...", "completed": "已完成", "error": "错误", "cancelled": "已取消", "stopped": "已停止", "stale": "已过时 (需重新生成)", "unknown": "未知" },
+  "error": {
+    "prefix": "错误", "details": "详情", "prdEmpty": "项目描述不能为空。",
+    "noAspectsSelected": "请至少选择一个方面进行处理。", "unknown": "发生未知错误。", "processingFailedHalt": "“{{name}}”处理失败。流程已停止。",
+    "noCompletedItems": "没有已完成的项目可供下载。",
+    "prerequisitesNotMet": "前置条件未满足。请按顺序完成所有必要的步骤。",
+    "apiKeyNotConfigured": "API密钥未配置。请确保您的环境已正确设置。",
+    "metaPromptMissing": "选择的分析方面无效，缺少核心指令。",
+    "aiGenerationFailed": "AI生成失败。这可能是暂时的网络问题，请检查您的输入并重试。",
+    "unknownApiError": "与AI服务通信时发生未知错误。",
+    "onlyCompletedSelected": "您选择的所有模块均已完成。请选择一个待处理的模块以继续。"
+  },
+  "log": {
+    "stoppedByUser": "流程已被用户停止。", "callingAi": "  -> 正在为“{{name}}”调用AI...", "aiStreamComplete": "  -> “{{name}}”的AI流成功完成。", "aiCallFailed": "  -> “{{name}}”的AI调用失败：{{error}}",
+    "pipelineBatchSuccess": "当前选择的模块已处理完毕。您可以选择新的模块并再次开始。",
+    "stageProcessingStart": "开始处理阶段 '{{stage}}'...",
+    "stageSuccess": "阶段 '{{stage}}' 已成功完成。",
+    "stopRequested": "已请求停止。流程将在当前任务后停止。",
+    "fullPipelineStarted": "完整流程已启动。将自动按顺序执行所有未完成的步骤。",
+    "fullPipelineSuccess": "完整流程已成功执行完毕！"
+  },
+  "confirm": { "reset": "您确定要重置整个流程吗？所有进度和输入都将丢失。" },
+  "aspect": {
+    "planningGoogleSearchResearch": { "name": "深度研究 (通过谷歌搜索)", "description": "可选：让AI使用谷歌搜索对您的构想进行深度研究，分析市场趋势、竞争对手和最佳实践。" },
+    "planningSMARTGoals": { "name": "1.1 目标与可行性", "description": "设定可衡量的项目目标，并评估游戏化是否是达成目标的合适策略。" },
+    "planningAudienceAnalysis": { "name": "1.2 用户与动机", "description": "描绘用户画像，分析其内在动机与玩家类型，为游戏化设计奠定基础。" },
+    "planningThemeSlogan": { "name": "1.3 主题与口号", "description": "设计引人入胜的主题和口号，作为吸引用户的核心宣传工具。" },
+    "planningCoreTeamRoles": { "name": "1.4 团队与分工", "description": "构建高效的团队架构，明确职责分工以避免内部执行矛盾。" },
+    "planningGamificationIdeation": { "name": "1.5 游戏化构思", "description": "进行创造性头脑风暴，探索多种游戏化概念、主题和核心机制。" },
+    "planningBudget": { "name": "1.6 预算规划", "description": "制定详细的财务预算，并将其作为项目运行的核心规则进行管理。" },
+    "planningRiskAssessment": { "name": "1.7 风险评估", "description": "识别潜在风险，并制定相应的缓解措施与应急预案。" },
+    "preparationVenueLogistics": { "name": "2.1 场地与后勤", "description": "规划场地、设施与后勤支持，将其视为影响用户体验的关键工具。" },
+    "preparationContentGamification": { "name": "2.2 内容与游戏化蓝图", "description": "设计核心内容，并创建详细的游戏化设计蓝图，包括核心循环与玩家旅程。" },
+    "preparationPromotionStrategy": { "name": "2.3 宣传策略", "description": "制定多渠道推广计划，以此构建和动员项目的核心用户社群。" },
+    "preparationBillOfMaterials": { "name": "2.4 物料清单(BOM)", "description": "生成一份全面的物料清单，确保所有执行环节的工具都准备就绪。" },
+    "executionRunbookEmergency": { "name": "3.1 执行手册与应急预案", "description": "创建精确到分钟的执行流程(Runbook)和危机管理预案。" },
+    "executionPostEventEvaluation": { "name": "3.2 复盘与评估", "description": "设计评估框架，衡量项目成果及游戏化机制的有效性，驱动改进。" },
+    "executionMonitoringOptimization": { "name": "3.3 长期监控与优化", "description": "制定游戏化系统的长期监控、数据分析和迭代优化计划。" }
+  },
+   "about": {
+    "title": "关于我们",
+    "company": {
+      "title": "关于智研家",
+      "p1": "智研家是一家专注于人工智能与创造力交叉领域的前沿科技公司。我们的使命是开发能够增强人类智慧、放大创造潜能的工具。我们相信，AI的最佳应用不是取代人类，而是成为创造者、设计师和思想家不可或缺的“副驾驶”，帮助他们跨越从灵感到现实的鸿沟。",
+      "p2": "“AI驱动的专业设计与策划引擎”是我们理念的体现。它将强大的理论框架与AI能力相结合，旨在将专业的系统性策划能力普及给每一位有创意的个体和团队。"
+    },
+    "philosophy": {
+      "title": "我们的产品哲学：设计无限游戏",
+      "p1": "在詹姆斯·卡斯（James P. Carse）的著作《有限与无限的游戏》中，他提出了两种类型的“游戏”：有限游戏的目标是赢得胜利，而无限游戏的目标是让游戏永远进行下去。传统的产品设计往往陷入了“有限游戏”的思维模式——追求功能上线、KPI达成等短期胜利。然而，真正能留住用户的产品，往往具备“无限游戏”的特质：它们创造了一个能让用户持续成长、探索和互动的世界。",
+      "p2": "本工具的核心设计哲学，就是帮助创造者们跳出“有限游戏”的思维陷阱。通过活动理论，我们识别并解决那些终结“游戏”的系统性矛盾，从而实现对“无限游戏”——即可持续的参与感、有意义的成长和深度的社交连接——的设计。"
+    },
+    "contact": {
+        "title": "联系我们",
+        "p1": "我们一直在寻找有才华的伙伴和有趣的合作机会。如果您对我们的产品有任何建议，或希望探讨潜在的合作，请通过以下方式联系我们：",
+        "email": "电子邮箱",
+        "website": "官方网站"
+    }
+  },
+  "download": {
+    "zipFilename": "项目策划方案.zip",
+    "mdFilename": "{{name}}_方案"
+  }
+};
+
+let translations: any = {
+  en: enTranslations,
+  zh: zhTranslations
+};
+let translationsLoaded = true;
+let isInitialized = false;
+
+// Default to 'zh' but respect user's preference
 let currentLanguage = localStorage.getItem('language') || 'zh';
 
+// Sets the current language, saves preference, and updates the UI
 export function setLanguage(lang: 'en' | 'zh') {
   currentLanguage = lang;
   localStorage.setItem('language', lang);
-  if (translationsLoaded) {
-    translateAll();
-    const event = new CustomEvent('languageChanged', { detail: lang });
-    window.dispatchEvent(event);
-  }
+  translateAllStatic();
+  // Notify React components of the change
+  const event = new CustomEvent('languageChanged', { detail: lang });
+  window.dispatchEvent(event);
 }
 
 export function getLanguage() {
   return currentLanguage;
 }
 
+// Main translation function
 export function t(key: string, options?: { [key:string]: string | number }): string {
-  if (!translationsLoaded) return key;
+  if (!translationsLoaded) return key; // Return key if translations aren't loaded
 
   const keys = key.split('.');
   let result = translations[currentLanguage];
   for (const k of keys) {
     result = result?.[k];
     if (result === undefined) {
+      // Attempt to find the key in the fallback language (English)
       let fallbackResult = translations['en'];
        for (const fk of keys) {
             fallbackResult = fallbackResult?.[fk];
-            if (fallbackResult === undefined) return key;
+            if (fallbackResult === undefined) return key; // Return key if not found anywhere
        }
        result = fallbackResult;
        break;
     }
   }
 
+  // Replace placeholders like {{name}}
   if (typeof result === 'string' && options) {
     return Object.entries(options).reduce((acc, [k, v]) => {
       return acc.replace(new RegExp(`{{${k}}}`, 'g'), String(v));
@@ -63,8 +325,10 @@ export function t(key: string, options?: { [key:string]: string | number }): str
   return result || key;
 }
 
-function translateAll() {
+// Translates static HTML elements that have the `data-i18n-key` attribute
+function translateAllStatic() {
   if (!translationsLoaded) return;
+  
   document.querySelectorAll('[data-i18n-key]').forEach(element => {
     const key = element.getAttribute('data-i18n-key');
     if (key) {
@@ -80,37 +344,45 @@ function translateAll() {
     }
   });
 
-  const lang = getLanguage();
-  document.documentElement.lang = lang;
+  document.documentElement.lang = currentLanguage;
   
   const currentLangElement = document.getElementById('current-lang');
   if (currentLangElement) {
-      currentLangElement.textContent = lang === 'zh' ? '中文' : 'English';
+      currentLangElement.textContent = currentLanguage === 'zh' ? '中文' : 'English';
   }
 }
 
-async function initialize() {
-  await loadTranslations();
-  translateAll();
-  
+// Sets up event listeners for the language switcher dropdown
+function setupEventListeners() {
   document.querySelectorAll('.lang-dropdown-content a').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
         const lang = link.getAttribute('data-lang');
         if (lang === 'en' || lang === 'zh') {
-            setLanguage(lang);
+            setLanguage(lang as 'en' | 'zh');
         }
     });
   });
-
-  const event = new CustomEvent('languageChanged', { detail: getLanguage() });
-  window.dispatchEvent(event);
-  return true;
 }
 
+// The main initialization function called by the app, now synchronous
 export function initializeI18n() {
-    if (!initializationPromise) {
-        initializationPromise = initialize();
-    }
-    return initializationPromise;
+    if (isInitialized) return;
+    
+    translateAllStatic();
+    setupEventListeners(); // Setup listeners for static parts of the page
+    isInitialized = true;
+    
+    // Dispatch initial event for React components
+    const event = new CustomEvent('languageChanged', { detail: getLanguage() });
+    window.dispatchEvent(event);
+}
+
+// This part allows i18n.ts to work on static pages like about.html
+// without needing the main React app to call initializeI18n.
+const isReactApp = !!document.getElementById('root');
+if (!isReactApp) {
+    document.addEventListener('DOMContentLoaded', () => {
+        initializeI18n();
+    });
 }
