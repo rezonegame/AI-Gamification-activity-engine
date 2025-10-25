@@ -1,0 +1,134 @@
+
+{
+  "html": {
+    "title": { "main": "AI-Powered Professional Design & Planning Engine", "about": "About Us - AI-Powered Professional Design & Planning Engine" },
+    "meta": {
+      "description": "Your expert AI partner, guiding you through a systematic, professional process to inject a gamification gene into your project, turning any idea into a successful, engaging reality.",
+      "keywords": "activity theory, human-computer interaction, user experience, instructional design, organizational development, gamification, user engagement, AI tool, systems thinking, project planning, event planning, course design",
+      "description.about": "Learn about the AI-Powered Professional Design & Planning Engine from ThinkTank, a tool designed to turn any idea into a successful reality through a systemic, AI-driven professional process."
+    },
+    "og": { "title": "AI-Powered Professional Design & Planning Engine - Inject a Gamification Gene into Your Project", "description": "Our AI guides you through a full suite of professional planning, from goal setting, motivation analysis, and gamification ideation to flawless execution and long-term optimization, creating experiences that truly captivate users." },
+    "twitter": { "title": "AI-Powered Professional Design & Planning Engine - Inject a Gamification Gene into Your Project", "description": "Our AI guides you through a full suite of professional planning, from goal setting, motivation analysis, and gamification ideation to flawless execution and long-term optimization, creating experiences that truly captivate users." }
+  },
+  "nav": { "features": "Core Features", "howItWorks": "How It Works", "faq": "FAQ" },
+  "hero": {
+    "title": { "line1": "AI-Powered Professional Design & Planning Engine", "line2": "Inject a Gamification Gene into Your Project" },
+    "subtitle": "Our AI engine fuses professional project planning workflows with cutting-edge gamification design theory to help you create extraordinary experiences that not only launch successfully but also inspire deep user engagement and lasting enthusiasm.",
+    "feature1": "Systemic Planning", "feature2": "Gamification Design", "feature3": "Create Lasting Momentum",
+    "cta": { "start": "Start Planning for Free" }
+  },
+  "howItWorks": {
+    "title": "A Structured Journey from Idea to Success",
+    "subtitle": "The AI will guide you through a professional, multi-stage design and planning process.",
+    "step1": { "title": "Plan & Ideate", "description": "Input your initial idea. The AI helps you set SMART goals, analyze user motivation, conduct gamification ideation, and complete budget and risk assessments to build a solid foundation." },
+    "step2": { "title": "Design & Prepare", "description": "The AI generates a detailed Gamification Design Blueprint, promotion strategy, and Bill of Materials (BOM), turning vague concepts into concrete, actionable plans." },
+    "step3": { "title": "Execute & Optimize", "description": "The AI generates a detailed Runbook, emergency protocols, and post-event evaluation plans, and maps out a long-term monitoring strategy to ensure lasting success." },
+    "step4": { "title": "Download & Iterate", "description": "Export all generated planning documents with one click. Based on the AI's analysis, you can easily iterate and optimize your plan for continuous improvement." }
+  },
+  "features": {
+    "title": "Your AI-Powered Systems Designer & Planner", "subtitle": "Translating professional theory and practical experience into productivity for every project.",
+    "card1": { "title": "Systemic Perspective", "description": "Using Activity Theory, we analyze your project as a complete 'Activity System' to find the root causes of success or failure, not just list tasks." },
+    "card2": { "title": "Research-Driven Gamification", "description": "The AI integrates a validated gamification design framework, starting with user motivation and player type analysis to design systems that truly foster intrinsic motivation, not just simple 'Points, Badges, and Leaderboards'." },
+    "card3": { "title": "Comprehensive Checklists", "description": "We provide a full suite of professional planning documents, from budgets and risk controls to a Bill of Materials (BOM), ensuring you are thorough and foolproof." },
+    "card4": { "title": "Actionable Execution Plans", "description": "The AI doesn't just help plan; it generates detailed Runbooks and emergency protocols to ensure your ideas are smoothly implemented." },
+    "card5": { "title": "Continuous Optimization", "description": "Successful gamified systems require constant tuning. The AI generates a long-term monitoring and optimization plan to help you maintain balance and appeal through data analysis and A/B testing." },
+    "card6": { "title": "Downloadable & Actionable", "description": "Export all generated analysis reports and design documents as individual markdown files or a single ZIP archive to easily integrate into your team's workflow." }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions", "subtitle": "Have questions? We have answers.",
+    "q1": { "question": "How is this tool's gamification design different from others?", "answer": "Our key differentiators are 'systemic' and 'research-driven'. We don't just suggest 'add a badge'. Instead, we first deeply understand your users and system goals through Activity Theory and player type analysis. Then, in a dedicated 'Ideation' phase, we explore multiple gamification concepts. Finally, we craft the most suitable concept into a complete system with a core loop, player journey, and a long-term optimization plan. It's a complete, professional process from 'why' to 'what' to 'how'." },
+    "q2": { "question": "Is this tool for me? I'm not a professional project manager.", "answer": "Absolutely. The value of this tool is that it 'translates' professional planning processes and theories into a guided, practical set of steps that anyone can use. You don't need prior knowledge of Activity Theory or project management. Just provide your initial idea, and the AI will act as a professional planning consultant, guiding you through all stages like goal setting, budgeting, risk control, and material prep, generating professional documents along the way." },
+    "q3": { "question": "Is my data private and secure?", "answer": "Yes. We do not store your documents or the generated outputs on our servers. Your input is sent directly to the Google Gemini API for processing and streamed back to your browser. Your input text is saved in your browser's local storage for convenience so you don't lose your work between sessions, but you can clear it at any time." },
+    "q4": { "question": "Can I use the generated content commercially?", "answer": "Absolutely. The generated content is yours to use as a planning document, budget report, or risk control manual for your commercial projects. As with any AI-generated content, we always recommend you review, edit, and adapt it to perfectly fit your project's unique needs and legal requirements." }
+  },
+  "cta": { "title": "Ready to Turn Your Idea Into a Successful Reality?", "subtitle": "Stop scattered planning, start systemic design. Master every detail and launch your project plan now.", "button": "Launch Engine" },
+  "footer": { "owner": "ThinkTank", "rights": "All rights reserved.", "tagline": "Powered by ThinkTank.", "about": "About Us" },
+  "app": { "title": "AI-Powered Professional Design & Planning Engine", "subtitle": "Your AI partner for turning ideas into successful, engaging realities." },
+  "prdInput": { "label": "1. Input Your Project Concept", "placeholder": "Paste your project plan, course outline, workflow description, or initial ideas here...\n\nExample:\nI want to design a one-month online onboarding program for new employees. The goal is to help them quickly understand the company culture and master basic job skills. I want the process to be more engaging than just watching dry videos...", "description": "Describe the project you want to plan in detail, including its goals, target audience, and core content. The more detail you provide, the more accurate the AI's analysis will be." },
+  "controls": {
+    "runFullPipeline": "Run Full Pipeline",
+    "runSelected": "Run Selected Steps",
+    "stop": "Stop Processing",
+    "reset": "Reset",
+    "downloadAll": "Download All (ZIP)",
+    "confirmReset": "Confirm Reset?"
+  },
+  "workflow": {
+    "title": "Full Project Planning Workflow Overview",
+    "stage": {
+      "research": { "title": "Optional Stage 0: In-Depth Research", "description": "Before formal planning, enable this step to have the AI conduct in-depth research on your concept using Google Search for market analysis, competitor insights, and best practices, providing richer context for subsequent steps." },
+      "planning": { "title": "Stage 1: Plan & Ideate", "description": "From goals to risks, define the project's core blueprint. The AI will guide you to set SMART goals, analyze the audience, devise a theme, assemble a team, create a budget, and conduct a risk assessment." },
+      "preparation": { "title": "Stage 2: Design & Prepare", "description": "From venue to materials, turn the blueprint into concrete preparations. The AI will help you plan logistics, create a gamification blueprint, devise a promotion strategy, and generate a detailed Bill of Materials." },
+      "execution_evaluation": { "title": "Stage 3: Execute & Optimize", "description": "From process to post-mortem, ensure a smooth launch and continuous improvement. The AI will generate a detailed runbook, emergency protocols, a post-mortem framework, and a long-term optimization strategy." }
+    }
+  },
+  "progressItem": {
+    "edit": "Edit", "save": "Save", "cancel": "Cancel", "copy": "Copy", "copied": "Copied!", "copyFailed": "Failed",
+    "hide": "Hide", "show": "Show", "download": "Download",
+    "lockedTooltip": "Complete previous steps to unlock.",
+    "aria": { "select": "Select aspect {{name}}", "toggleOutput": "Show or hide output for {{name}}", "download": "Download output for {{name}}", "copy": "Copy output for {{name}}" }
+  },
+  "logs": { "title": "Run Logs" },
+  "status": { "pending": "Pending", "processing": "Processing...", "completed": "Completed", "error": "Error", "cancelled": "Cancelled", "stopped": "Stopped", "stale": "Stale (Needs Rerun)", "unknown": "Unknown" },
+  "error": {
+    "prefix": "Error", "details": "Details", "prdEmpty": "Project description cannot be empty.",
+    "noAspectsSelected": "Please select at least one aspect to process.", "unknown": "An unknown error occurred.", "processingFailedHalt": "\"{{name}}\" processing failed. Pipeline halted.",
+    "noCompletedItems": "No completed items to download.",
+    "prerequisitesNotMet": "Prerequisites not met. Please complete all necessary steps in order.",
+    "apiKeyNotConfigured": "API Key is not configured. Please ensure it is set up correctly in your environment.",
+    "metaPromptMissing": "Invalid aspect selected: core instructions are missing.",
+    "aiGenerationFailed": "AI generation failed. This may be a temporary network issue. Please check your input and try again.",
+    "unknownApiError": "An unknown error occurred while communicating with the AI service.",
+    "onlyCompletedSelected": "All selected modules are already completed. Please select a pending module to continue."
+  },
+  "log": {
+    "stoppedByUser": "Pipeline stopped by user.", "callingAi": "  -> Calling AI for \"{{name}}\"...", "aiStreamComplete": "  -> AI stream for \"{{name}}\" completed successfully.", "aiCallFailed": "  -> AI call for \"{{name}}\" failed: {{error}}",
+    "pipelineBatchSuccess": "Processing of the current batch of modules is complete. You can now select new modules and start the process again.",
+    "stageProcessingStart": "Beginning processing for stage '{{stage}}'...",
+    "stageSuccess": "Stage '{{stage}}' completed successfully.",
+    "stopRequested": "Stop requested. Pipeline will halt after current task.",
+    "fullPipelineStarted": "Full pipeline started. Will automatically execute all unfinished steps in order.",
+    "fullPipelineSuccess": "Full pipeline has been executed successfully!"
+  },
+  "confirm": { "reset": "Are you sure you want to reset the entire pipeline? All progress and inputs will be lost." },
+  "aspect": {
+      "planningGoogleSearchResearch": { "name": "In-Depth Research (via Google Search)", "description": "Optional: Let the AI conduct in-depth research on your concept using Google Search to analyze market trends, competitors, and best practices." },
+      "planningSMARTGoals": { "name": "1.1 Goals & Feasibility", "description": "Define measurable project goals and assess if gamification is the right strategy to achieve them." },
+      "planningAudienceAnalysis": { "name": "1.2 Users & Motivation", "description": "Develop user personas and analyze their intrinsic motivations and player types to inform gamification design." },
+      "planningThemeSlogan": { "name": "1.3 Theme & Slogan", "description": "Design a compelling theme and slogan to serve as the core promotional tool to attract users." },
+      "planningCoreTeamRoles": { "name": "1.4 Team & Roles", "description": "Build an efficient team structure and define responsibilities to prevent internal execution conflicts." },
+      "planningGamificationIdeation": { "name": "1.5 Gamification Ideation", "description": "Conduct a creative brainstorm to explore diverse gamification concepts, themes, and core mechanics." },
+      "planningBudget": { "name": "1.6 Budget Planning", "description": "Create a detailed financial budget and manage it as a core rule for the project's operation." },
+      "planningRiskAssessment": { "name": "1.7 Risk Assessment", "description": "Identify potential risks and develop corresponding mitigation measures and contingency plans." },
+      "preparationVenueLogistics": { "name": "2.1 Venue & Logistics", "description": "Plan the venue, facilities, and logistical support, treating them as critical tools that impact the user experience." },
+      "preparationContentGamification": { "name": "2.2 Content & Gamification Blueprint", "description": "Design the core content and create a detailed Gamification Design Blueprint, including the core loop and player journey." },
+      "preparationPromotionStrategy": { "name": "2.3 Promotion Strategy", "description": "Develop a multi-channel promotion plan to build and mobilize the project's core user community." },
+      "preparationBillOfMaterials": { "name": "2.4 Bill of Materials (BOM)", "description": "Generate a comprehensive list of materials to ensure all tools for execution are ready." },
+      "executionRunbookEmergency": { "name": "3.1 Runbook & Emergency Plan", "description": "Create a minute-by-minute execution schedule (Runbook) and a crisis management plan." },
+      "executionPostEventEvaluation": { "name": "3.2 Post-Mortem & Evaluation", "description": "Design an evaluation framework to measure project outcomes and the effectiveness of gamification mechanics to drive improvement." },
+      "executionMonitoringOptimization": { "name": "3.3 Long-Term Monitoring & Optimization", "description": "Create a long-term plan for monitoring, data analysis, and iterative optimization of the gamified system." }
+  },
+   "about": {
+    "title": "About Us",
+    "company": {
+      "title": "About ThinkTank",
+      "p1": "ThinkTank is a leading technology company specializing in the intersection of artificial intelligence and creativity. Our mission is to develop tools that augment human intelligence and amplify creative potential. We believe that the best application of AI is not to replace humans, but to become an indispensable co-pilot for creators, designers, and thinkers, helping them bridge the gap from inspiration to reality.",
+      "p2": "The 'AI-Powered Professional Design & Planning Engine' is a manifestation of our philosophy. It combines powerful theoretical frameworks with AI capabilities, aiming to democratize professional systemic planning for every creative individual and team."
+    },
+    "philosophy": {
+      "title": "Our Product Philosophy: Designing Infinite Games",
+      "p1": "In his book 'Finite and Infinite Games', James P. Carse describes two types of games: finite games are played for the purpose of winning, while infinite games are played for the purpose of continuing the play. Traditional product design often falls into a 'finite game' mindset—chasing short-term wins like feature launches or KPI targets. However, the products that truly retain users often exhibit qualities of an 'infinite game': they create a world where users can continuously grow, explore, and interact.",
+      "p2": "The core philosophy of this tool is to help creators escape the 'finite game' trap. By using Activity Theory, we identify and resolve the systemic contradictions that end the 'play', enabling the design of 'infinite games'—experiences built on sustainable engagement, meaningful growth, and deep social connection."
+    },
+    "contact": {
+        "title": "Contact Us",
+        "p1": "We are always looking for talented partners and exciting collaboration opportunities. If you have any suggestions for our products or wish to discuss potential partnerships, please contact us through the following channels:",
+        "email": "Email",
+        "website": "Official Website"
+    }
+  },
+  "download": {
+    "zipFilename": "Project_Plan.zip",
+    "mdFilename": "{{name}}_Plan"
+  }
+}

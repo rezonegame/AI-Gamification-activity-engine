@@ -1,0 +1,294 @@
+
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n-key="html.title.main">AI驱动的专业设计与策划引擎</title>
+  
+  <!-- SEO -->
+  <meta name="description" data-i18n-key="html.meta.description" content="无论是需要解决深层用户动机问题的数字产品，还是需要周密策划的线下活动与课程，我们的AI引擎都能为您提供专家级的、结构化的分析与规划，将您的愿景转化为成功的现实。">
+  <meta name="keywords" data-i18n-key="html.meta.keywords" content="activity theory, CHAT, human-computer interaction, user experience, UX design, instructional design, organizational development, gamification, user engagement, AI tool, design thinking, systems thinking, 活动理论, 人机交互, 用户体验, 教学设计, 组织发展, 游戏化, 用户参与, AI工具, 系统思维, 项目策划, 活动策划, 课程设计">
+  <link rel="canonical" href="/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="/">
+  <meta property="og:title" data-i18n-key="html.og.title" content="AI驱动的专业设计与策划引擎 - 从愿景到落地">
+  <meta property="og:description" data-i18n-key="html.og.description" content="AI将引导您完成从目标设定、预算规划、风险评估到物料准备和流程执行的全套专业策划，确保您的项目万无一失。">
+  <meta property="og:image" content="/social-preview.png">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="/">
+  <meta property="twitter:title" data-i18n-key="html.twitter.title" content="AI驱动的专业设计与策划引擎 - 从愿景到落地">
+  <meta property="twitter:description" data-i18n-key="html.twitter.description" content="AI将引导您完成从目标设定、预算规划、风险评估到物料准备和流程执行的全套专业策划，确保您的项目万无一失。">
+  <meta property="twitter:image" content="/social-preview.png">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #111827; /* gray-900 */
+      color: #f3f4f6; /* gray-100 */
+    }
+    .hero-bg {
+      background-image: radial-gradient(circle at 20% 80%, rgba(79, 70, 229, 0.2), transparent 30%), radial-gradient(circle at 80% 30%, rgba(139, 92, 246, 0.2), transparent 30%);
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(79, 70, 229, 0.5);
+    }
+    /* Scrollbar styling for a more modern look */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1f2937; /* gray-800 */
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #4b5563; /* gray-600 */
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #6b7280; /* gray-500 */
+    }
+    .lang-dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      background-color: #1f2937;
+      min-width: 120px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 0.5rem;
+      border: 1px solid #374151;
+    }
+    .lang-dropdown:hover .lang-dropdown-content {
+      display: block;
+    }
+  </style>
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "AI-Powered Professional Design & Planning Engine",
+    "url": "./",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "description": "Whether it's a digital product needing to solve deep user motivation issues, or an offline event or course requiring meticulous planning, our AI engine provides expert-level, structured analysis and planning to turn your vision into a successful reality.",
+    "screenshot": "./screenshot.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@^18.2.0/client",
+    "@google/genai": "https://esm.sh/@google/genai@^1.11.0",
+    "react-dom/": "https://esm.sh/react-dom@^18.2.0/",
+    "react/": "https://esm.sh/react@^18.2.0/"
+  }
+}
+</script>
+</head>
+<body class="antialiased">
+
+  <!-- Header -->
+  <header class="sticky top-0 bg-gray-900/80 backdrop-blur-sm z-50">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="text-2xl font-bold text-white">
+        <a href="#"><span class="text-indigo-400">Activity</span>Engine</a>
+      </div>
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="#features" class="text-gray-300 hover:text-indigo-400 transition" data-i18n-key="nav.features">核心功能</a>
+        <a href="#how-it-works" class="text-gray-300 hover:text-indigo-400 transition" data-i18n-key="nav.howItWorks">工作原理</a>
+        <a href="#faq" class="text-gray-300 hover:text-indigo-400 transition" data-i18n-key="nav.faq">常见问题</a>
+      </div>
+       <div class="relative lang-dropdown">
+        <button id="lang-selector-btn" class="flex items-center space-x-2 text-gray-300 hover:text-indigo-400 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10 2a8 8 0 100 16 8 8 0 000-16zM6.343 14.343a1 1 0 010-1.414L8.586 10 6.343 7.07a1 1 0 111.414-1.414l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414 0z" />
+            </svg>
+          <span id="current-lang">中文</span>
+          <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+        </button>
+        <div class="lang-dropdown-content">
+          <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white" data-lang="zh">中文 (简体)</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white" data-lang="en">English</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- App Section -->
+  <main id="app">
+    <div id="root"></div>
+  </main>
+
+  <!-- Hero Section -->
+  <section class="hero-bg py-24 sm:py-32">
+    <div class="container mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4" data-i18n-key="hero.title.line1" >
+        AI驱动的专业设计与策划引擎
+      </h1>
+      <h2 class="text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400" data-i18n-key="hero.title.line2">
+        为您的项目注入游戏化基因
+      </h2>
+      <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 mt-4" data-i18n-key="hero.subtitle">
+        我们的AI引擎融合了专业的项目策划流程与前沿的游戏化设计理论，助您打造不仅能成功落地，更能激发用户深度参与和持续热情的非凡体验。
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-4 mb-10">
+          <span class="flex items-center text-sm text-gray-400"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-green-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span data-i18n-key="hero.feature1">系统性策划</span></span>
+          <span class="flex items-center text-sm text-gray-400"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-green-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span data-i18n-key="hero.feature2">游戏化设计</span></span>
+          <span class="flex items-center text-sm text-gray-400"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-green-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg><span data-i18n-key="hero.feature3">创造持续动力</span></span>
+      </div>
+      <a href="#app" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-4 px-8 rounded-full text-lg transition-transform transform hover:scale-105 shadow-lg shadow-indigo-500/30" data-i18n-key="hero.cta.start">
+        免费开始策划
+      </a>
+    </div>
+  </section>
+  
+  <!-- How it works -->
+  <section id="how-it-works" class="py-20 sm:py-24 bg-gray-900">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-white" data-i18n-key="howItWorks.title">从想法到成功的结构化旅程</h2>
+            <p class="mt-4 text-lg text-gray-400" data-i18n-key="howItWorks.subtitle">AI将引导您完成一次专业的、分阶段的设计与策划流程。</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Stage 1 -->
+            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500/20 text-indigo-300 mx-auto mb-4 text-xl font-bold border-2 border-indigo-500">1</div>
+                <h3 class="text-lg font-semibold text-white mb-2 text-center" data-i18n-key="howItWorks.step1.title">策划与构思</h3>
+                <p class="text-sm text-gray-400" data-i18n-key="howItWorks.step1.description">输入您的初步想法。AI会帮助您设定SMART目标、分析用户动机、进行游戏化构思，并完成预算与风险评估，为项目奠定坚实基础。</p>
+            </div>
+            <!-- Stage 2 -->
+            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500/20 text-indigo-300 mx-auto mb-4 text-xl font-bold border-2 border-indigo-500">2</div>
+                <h3 class="text-lg font-semibold text-white mb-2 text-center" data-i18n-key="howItWorks.step2.title">设计与准备</h3>
+                <p class="text-sm text-gray-400" data-i18n-key="howItWorks.step2.description">AI为您生成详细的游戏化设计蓝图、宣传策略和物料清单(BOM)，将模糊的概念转化为具体的、可执行的准备方案。</p>
+            </div>
+            <!-- Stage 3 -->
+            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500/20 text-indigo-300 mx-auto mb-4 text-xl font-bold border-2 border-indigo-500">3</div>
+                <h3 class="text-lg font-semibold text-white mb-2 text-center" data-i18n-key="howItWorks.step3.title">执行与优化</h3>
+                <p class="text-sm text-gray-400" data-i18n-key="howItWorks.step3.description">AI为您生成详细的执行手册(Runbook)、应急预案和事后评估方案，并规划长期监控策略，确保持续成功。</p>
+            </div>
+            <!-- Stage 4 -->
+            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500/20 text-indigo-300 mx-auto mb-4 text-xl font-bold border-2 border-indigo-500">4</div>
+                <h3 class="text-lg font-semibold text-white mb-2 text-center" data-i18n-key="howItWorks.step4.title">下载与迭代</h3>
+                <p class="text-sm text-gray-400" data-i18n-key="howItWorks.step4.description">一键下载所有生成的策划文档。基于AI的分析，您可以轻松地对方案进行迭代和优化，实现持续改进。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-20 sm:py-24">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-white" data-i18n-key="features.title">您的AI驱动的系统设计师与策划师</h2>
+        <p class="mt-4 text-lg text-gray-400" data-i18n-key="features.subtitle">将专业理论与实践经验，转化为每个项目的生产力。</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="feature-card bg-gray-800 border border-gray-700/50 p-6 rounded-lg transition duration-300">
+          <h3 class="text-lg font-semibold text-indigo-300 mb-2" data-i18n-key="features.card1.title">系统化视角</h3>
+          <p class="text-gray-400 text-sm" data-i18n-key="features.card1.description">我们使用活动理论，将项目视为一个完整的“活动系统”进行分析，找到影响项目成败的根源，而不只是罗列任务清单。</p>
+        </div>
+        <div class="feature-card bg-gray-800 border border-gray-700/50 p-6 rounded-lg transition duration-300">
+          <h3 class="text-lg font-semibold text-indigo-300 mb-2" data-i18n-key="features.card2.title">研究驱动的游戏化设计</h3>
+          <p class="text-gray-400 text-sm" data-i18n-key="features.card2.description">AI集成了经过验证的游戏化设计框架，从分析用户动机和玩家类型入手，设计真正能激发内在动力的系统，而非简单的“积分、徽章、排行榜”。</p>
+        </div>
+         <div class="feature-card bg-gray-800 border border-gray-700/50 p-6 rounded-lg transition duration-300">
+          <h3 class="text-lg font-semibold text-indigo-300 mb-2" data-i18n-key="features.card3.title">全面的策划清单</h3>
+          <p class="text-gray-400 text-sm" data-i18n-key="features.card3.description">提供从预算、风控到物料清单（BOM）的全套专业策划文档，确保您考虑周全、万无一失，避免遗漏关键细节。</p>
+        </div>
+        <div class="feature-card bg-gray-800 border border-gray-700/50 p-6 rounded-lg transition duration-300">
+          <h3 class="text-lg font-semibold text-indigo-300 mb-2" data-i18n-key="features.card4.title">可落地的执行方案</h3>
+          <p class="text-gray-400 text-sm" data-i18n-key="features.card4.description">AI不仅帮助分析和规划，更能生成详细的执行手册（Runbook）和应急预案，让您的想法能够平稳落地。</p>
+        </div>
+        <div class="feature-card bg-gray-800 border border-gray-700/50 p-6 rounded-lg transition duration-300">
+          <h3 class="text-lg font-semibold text-indigo-300 mb-2" data-i18n-key="features.card5.title">持续优化与监控</h3>
+          <p class="text-gray-400 text-sm" data-i18n-key="features.card5.description">成功的游戏化系统需要持续调整。AI会为您生成长期的监控与优化计划，帮助您通过数据分析和A/B测试，保持系统的平衡与吸引力。</p>
+        </div>
+        <div class="feature-card bg-gray-800 border border-gray-700/50 p-6 rounded-lg transition duration-300">
+          <h3 class="text-lg font-semibold text-indigo-300 mb-2" data-i18n-key="features.card6.title">可下载与分享</h3>
+          <p class="text-gray-400 text-sm" data-i18n-key="features.card6.description">将所有生成的分析报告和设计文档导出为单独的 markdown 文件或单个 ZIP 存档，轻松集成到您的团队工作流中。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-20 sm:py-24 bg-gray-900">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-white" data-i18n-key="faq.title">常见问题</h2>
+        <p class="mt-4 text-lg text-gray-400" data-i18n-key="faq.subtitle">有疑问？我们有答案。</p>
+      </div>
+      <div class="space-y-6">
+        <details class="bg-gray-800 p-6 rounded-lg">
+          <summary class="font-semibold text-lg cursor-pointer text-white" data-i18n-key="faq.q1.question">这个工具的游戏化设计和其他工具有什么不同？</summary>
+          <p class="mt-4 text-gray-400" data-i18n-key="faq.q1.answer">我们的核心区别在于“系统性”和“研究驱动”。我们不直接推荐“加个徽章”。相反，我们首先通过活动理论和玩家类型分析，深入理解您的用户和系统目标。然后，在一个专门的“创意”阶段，我们会探索多种可能的游戏化概念。最后，我们才将最合适的概念，设计成一个包含核心循环、玩家旅程和长期优化计划的完整系统。这是一个从“为什么”到“是什么”再到“如何做”的完整、专业流程。</p>
+        </details>
+        <details class="bg-gray-800 p-6 rounded-lg">
+          <summary class="font-semibold text-lg cursor-pointer text-white" data-i18n-key="faq.q2.question">这个工具适合我吗？我不是专业的项目经理。</summary>
+          <p class="mt-4 text-gray-400" data-i18n-key="faq.q2.answer">完全适合。这个工具的价值就在于将专业的策划流程和理论“翻译”成一套任何人都可以使用的、引导性的实践步骤。您不需要预先了解活动理论或项目管理。您只需提供您的初步想法，AI就会扮演专业策划顾问的角色，引导您一步步完成目标设定、预算、风控、物料准备等所有环节，并生成专业的策划文档。</p>
+        </details>
+        <details class="bg-gray-800 p-6 rounded-lg">
+          <summary class="font-semibold text-lg cursor-pointer text-white" data-i18n-key="faq.q3.question">我的数据是私密和安全的吗？</summary>
+          <p class="mt-4 text-gray-400" data-i18n-key="faq.q3.answer">是的。我们不会在我们的服务器上存储您的文档或生成的输出。您的输入将直接发送到Google Gemini API进行处理，并流式传输回您的浏览器。为了方便起见，您的输入文本会保存在您浏览器的本地存储中，这样您就不会在会话之间丢失工作，但您可以随时清除它。</p>
+        </details>
+        <details class="bg-gray-800 p-6 rounded-lg">
+          <summary class="font-semibold text-lg cursor-pointer text-white" data-i18n-key="faq.q4.question">我可以将生成的内容用于商业用途吗？</summary>
+          <p class="mt-4 text-gray-400" data-i18n-key="faq.q4.answer">当然可以。生成的内容归您所有，可以作为您商业项目的策划方案、预算报告、风控手册等。与任何AI生成的内容一样，我们始终建议您审查、编辑和调整它，以完美适应您项目的独特需求和法律要求。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 sm:py-24">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white" data-i18n-key="cta.title">准备好将您的想法变成成功的现实了吗？</h2>
+      <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto" data-i18n-key="cta.subtitle">停止零散的规划，开始系统性地策划。让每一个细节尽在掌握，立即启动您的项目策划。</p>
+      <a href="#app" class="mt-8 inline-block bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-4 px-8 rounded-full text-lg transition-transform transform hover:scale-105 shadow-lg shadow-indigo-500/30" data-i18n-key="cta.button">
+        启动引擎
+      </a>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="bg-gray-800 border-t border-gray-700 py-12">
+    <div class="container mx-auto px-6 text-center text-gray-400 text-sm">
+        <p><a href="./about.html" class="hover:text-indigo-400" data-i18n-key="footer.about">关于我们</a></p>
+        <p class="mt-4">&copy; 2024 <span data-i18n-key="footer.owner">智研家</span>. <span data-i18n-key="footer.rights">版权所有。</span></p>
+        <p class="mt-1" data-i18n-key="footer.tagline">由智研家提供技术支持。</p>
+    </div>
+  </footer>
+
+  <script type="module" src="./index.tsx"></script>
+</body>
+</html>
